@@ -23,7 +23,7 @@ La actividad fue desarrollada en un entorno con Git, GitHub y editor de texto en
 Debido a varias carácterísticas del modelo cascada(waterfall) tradicional entre ellas lo secuencial o lineal y el tener los procesos del desarrollo del software aislados, el modelo DevOps o mejor descrito como cultura DevOps. Que al contrario, iterativo - continuo y además que facilitaba la coordinación y colaboración debido a que en este último si trabajaban juntEs más DevOps surgió gracias a las deficiencias del modelo Cascada.
 
 **Imagen comparativa:**  
-![Comparación DevOps vs Cascada](imagenes/versus2.jpg)
+![Comparación DevOps vs Cascada](imagenes/versus3.jpg)
 
 **Ventajas de DevOps frente a cascada:**  
 - Feedback de manera continua y frecuente
@@ -145,5 +145,96 @@ Para comenzar antipatrones son en simples palabras, malas prácticas que engaña
 | Expiración de tokens             | Sincroniza NTP en todos los servicios y permite la validación de tiempo |
 
 ### KPI primario
-- **Métrica:** error 5xx ≤ 1%  
-- **V**
+Para empeza KPI son indicadores.Los primarios en especial son de los principales para evaluar el desempeño del proyecto.
+**KPI primario escogido:** Tasa de éxito de Logins; este es una métrica que mide en porcentaje la cantidad de intentos de inicio de sesión que se han logrado con éxito en un periodo de tiempo determinado.
+- **Métrica:** error ≤ 99.5   
+- **Ventana de observación:** observación continua en los primeros **15 minutos** tras despliegue.  
+
+### Pregunta retadora
+- Si el KPI técnico está bien, pero cae una métrica de producto (ej. conversión), ambos deben coexistir en el gate porque la calidad técnica **no garantiza valor de negocio**. Es necesario integrar métricas de usuario y métricas técnicas.
+
+---
+
+# 4.6 Fundamentos prácticos sin comandos (evidencia mínima)
+
+### HTTP - contrato observable
+- **Reporte:**  
+  - Método: `HEAD`  
+  - Código de estado: `200 OK`  
+  - Cabeceras: `Cache-Control`(max-age=0, private, must-revalidate), `strict-transport-security`(max-age=31536000)  
+- **Explicación:**  
+  - `Cache-Control` Influye en rendimiento porque este va a deicidir si el navegador puede reutilizar respuestas anteriores o si debe pedirlas de nuevo al servidor.  
+  - `strict-transport-security` Influye en rendimiento porque va a omitir las redirecciones innecesarias. En observabilidad porque hace más confiables los datos que se observarán en métricas y logs.  
+- **Captura:** `imagenes/http-evidencia.png`
+
+### DNS - nombres y TTL
+- **Reporte:** registro `A` con TTL = 24s  
+- **Explicación:** TTL corto facilita rollbacks rápidos, TTL largo mejora rendimiento pero retrasa propagación.  
+- **Captura:** `imagenes/dns-ttl.png`
+
+### TLS - seguridad en tránsito
+- **Reporte:**  
+  - CN: `github.com`  
+  - SAN: `www.github.com`  
+  - Vigencia: `2025-02-05` a `2026-02-05`  
+  - Emisor: `Sectigo ECC Domain Validation Secure Server CA`  
+- **Explicación:** si no valida la cadena → errores de confianza en el navegador usado, riesgo MITM(ataque), mala experiencia del usuario(UX).  
+- **Captura:** `imagenes/tls-cert.png`
+
+### Puertos - estado de runtime
+- **Ejemplo:**  
+  - Puerto `80` → HTTP  
+  - Puerto `53` → DNS  
+- **Explicación:** evidencia sirve para confirmar despliegues son correctos y si es que hay conflictos,detectarlos.  
+- **Captura:** `imagenes/puertos.png`
+
+### 12-Factor
+-   
+-   
+-   
+
+### Checklist de diagnóstico (incidente simulado)
+1.   
+2.   
+3.   
+4.   
+5.   
+6. 
+
+---
+
+# 4.7 Desafíos de DevOps y mitigaciones
+
+![Desafíos DevOps](imagenes/desafios_devops.png)
+
+### Riesgos y mitigaciones
+- **Culturales:**   
+- **Técnicos:**   
+- **Gobernanza:**   
+
+### Experimento controlado
+- **Hipótesis:**  
+- **Métrica primaria:**   
+- **Grupo control:**  
+- **Grupo experimental:**  
+- **Criterio de éxito:**   
+- **Plan de reversión:**   
+
+---
+
+# 4.8 Arquitectura mínima para DevSecOps
+
+![Arquitectura mínima](imagenes/arquitectura-minima.png)
+
+### Flujo
+
+
+### Controles
+- **DNS:**   
+- **HTTP:**   
+- **TLS:**   
+- **Servicio:**   
+
+### Relación con 12-Factor
+- **Config por entorno:**  
+- **Logs a stdout:**  
