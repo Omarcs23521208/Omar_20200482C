@@ -165,7 +165,7 @@ Para empeza KPI son indicadores.Los primarios en especial son de los principales
 - **Explicación:**  
   - `Cache-Control` Influye en rendimiento porque este va a deicidir si el navegador puede reutilizar respuestas anteriores o si debe pedirlas de nuevo al servidor.  
   - `strict-transport-security` Influye en rendimiento porque va a omitir las redirecciones innecesarias. En observabilidad porque hace más confiables los datos que se observarán en métricas y logs.  
-- **Captura:** `imagenes/http-evidencia.png`
+![evidenciahttp](imagenes/http-evidencia.png)
 
 ### DNS - nombres y TTL
 - **Reporte:** registro `A` con TTL = 24s  
@@ -179,14 +179,14 @@ Para empeza KPI son indicadores.Los primarios en especial son de los principales
   - Vigencia: `2025-02-05` a `2026-02-05`  
   - Emisor: `Sectigo ECC Domain Validation Secure Server CA`  
 - **Explicación:** si no valida la cadena → errores de confianza en el navegador usado, riesgo MITM(ataque), mala experiencia del usuario(UX).  
-- **Captura:** `imagenes/tls-cert.png`
+![evidenciatls](imagenes/tls-cert.png)
 
 ### Puertos - estado de runtime
 - **Ejemplo:**  
   - Puerto `80` → HTTP  
   - Puerto `53` → DNS  
 - **Explicación:** evidencia sirve para confirmar despliegues son correctos y si es que hay conflictos,detectarlos.  
-- **Captura:** `imagenes/puertos.png`
+![evidenciapuertos](imagenes/puertos.png)
 
 ### 12-Factor
 -   
