@@ -23,7 +23,7 @@ La actividad fue desarrollada en un entorno con Git, GitHub y editor de texto en
 Debido a varias carácterísticas del modelo cascada(waterfall) tradicional entre ellas lo secuencial o lineal y el tener los procesos del desarrollo del software aislados, el modelo DevOps o mejor descrito como cultura DevOps. Que al contrario, iterativo - continuo y además que facilitaba la coordinación y colaboración debido a que en este último si trabajaban juntEs más DevOps surgió gracias a las deficiencias del modelo Cascada.
 
 **Imagen comparativa:**  
-![Comparación DevOps vs Cascada](imagenes/versus3.jpg)
+![Comparación DevOps vs Cascada](imagenes/versus.jpg)
 
 **Ventajas de DevOps frente a cascada:**  
 - Feedback de manera continua y frecuente
@@ -130,7 +130,7 @@ Para comenzar antipatrones son en simples palabras, malas prácticas que engaña
 
 # 4.5 CI/CD y estrategias de despliegue (sandbox, canary, azul/verde)
 
-![Pipeline](imagenes/pipe.png)
+![Pipeline](imagenes/pipeline.png)
 
 ### Estrategia elegida
 - **Canary Deployment**  
