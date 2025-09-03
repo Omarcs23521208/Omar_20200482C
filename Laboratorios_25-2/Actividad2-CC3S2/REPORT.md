@@ -6,7 +6,7 @@
 
 ##1.1 Levantar la app: 
 Usando vscode y python se corre app.py y se realiza la solicitud HTTP mediante el servidor Flask
-![captura del vs code](code.png)
+![captura del vs code](imagenes/code.png)
 
 ##1.2 Inspección con curl:
 Dejando abierto la terminal con las variables de entorno PORT="8080" MESSAGE="Hola CC3S2" RELEASE="v1" abrimos otra y usando la petición directa.
