@@ -189,28 +189,29 @@ Para empeza KPI son indicadores.Los primarios en especial son de los principales
 ![evidenciapuertos](imagenes/puertos.png)
 
 ### 12-Factor
--   
--   
--   
+- Port binding:la aplicación debe tomar el puerto desde una variable de entorno (por ejemplo, PORT) para que pueda ejecutarse en distintos entornos sin necesidad de modificar el código.  
+- Logs: enviar los registros a la salida estándar (stdout) para que el entorno de ejecución los gestione, en lugar de escribirlos manualmente en archivos locales.
+- Anti-patrón: nunca almacenar contraseñas o secretos en el código, ya que esto rompe la reproducibilidad y representa un riesgo de seguridad.
 
 ### Checklist de diagnóstico (incidente simulado)
-1.   
-2.   
-3.   
-4.   
-5.   
-6. 
+1. Revisar endpoint HTTP: Asegúrate de que el endpoint responda correctamente con código 200 y verifica cabeceras importantes como Cache-Control y X-Request-ID. Si se detectan errores de servidor (5xx), retrocede a la versión anterior y registra un ticket de incidencia.
+2. Comprobar resolución DNS: Confirma que el dominio apunta a la IP correcta y revisa los registros A o CNAME junto con su TTL. Si la IP no coincide, coordina con el proveedor de DNS y aplica un rollback si es necesario.
+3. Validar certificado TLS: Verifica que el certificado esté vigente y que el CN/SAN coincida con lo esperado. En caso de expiración, renueva el certificado y reinicia el servicio correspondiente.
+4. Confirmar puertos activos: Revisa que los servicios estén escuchando en los puertos asignados (por ejemplo, 443). Si no están activos, revisa logs y reinicia los contenedores o servicios afectados.
+5. Monitorear recursos del host: Observa el uso de CPU y memoria. Si hay saturación, ajusta recursos o reinicia las instancias de forma controlada para mantener la estabilidad.
+
 
 ---
 
 # 4.7 Desafíos de DevOps y mitigaciones
+Cultural: resistencia al cambio y equipos aislados (Dev vs Ops). Mitigación: fomentar colaboración, capacitación y comunicación continua.
 
-![Desafíos DevOps](imagenes/desafios_devops.png)
+Técnico: dificultades en la integración de herramientas y automatización incompleta. Mitigación: implementar estándares de CI/CD, pipelines automatizados y pruebas automáticas.
 
-### Riesgos y mitigaciones
-- **Culturales:**   
-- **Técnicos:**   
-- **Gobernanza:**   
+Gobernanza: falta de control de seguridad, cumplimiento y auditoría. Mitigación: definir políticas claras, establecer gates de seguridad y monitoreo continuo.
+![Desafíos DevOps](imagenes/Diagrama.png)
+
+
 
 ### Experimento controlado
 - **Hipótesis:**  
